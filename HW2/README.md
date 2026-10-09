@@ -1,32 +1,34 @@
-  Since this is the bit of creativity that I get to play around with I tend to go a little to far with these, but here is another one.  I have, over the last 3 months been working on pricing algorithms for prediction markets (These are still slightly guerilla-esc and you can hunt for large spread and alpha pretty easily), and we are talking computations that need to take place in microseconds so as to not get screwed over by new orders in a market.  I got the math part, with different bespoke binary pricing kernels and whatnot but it took me a while to figure out what most might think is the easiest part, which is the simple yes or no logic gates, as to whether or not to send a buy or a sell order.  A theme in the work I do is I tend to put the carriage infront of the horse.
+#The Order Gatekeeper
 
-    This is the Order Gatekeeper. Prediction markets have yes or no contracts where the payout is either 100 cents if the event actually happens or 0 if the event doesn't, and for NO contracts the inverse is true.  These contracts trade at whole cents where prices are inclusive from 1 to 99 cents.  At any given moment the market has a "best bid" which is the highest price someone is willing to pay, and a "best ask", which is the lowest price anyone is willing to sell at.
+Since this is the bit of creativity that I get to play around with I tend to go a little to far with these, but here is another one.  I have, over the last 3 months been working on pricing algorithms for prediction markets (These are still slightly guerilla-esc and you can hunt for large spread and alpha pretty easily), and we are talking computations that need to take place in microseconds so as to not get screwed over by new orders in a market.  I got the math part, with different bespoke binary pricing kernels and whatnot but it took me a while to figure out what most might think is the easiest part, which is the simple yes or no logic gates, as to whether or not to send a buy or a sell order.  A theme in the work I do is I tend to put the carriage infront of the horse.
 
-    A.) Write a check_order(side, price, best_bid, best_ask) function where 'side' is 'buy' or 'sell',(This is guaranteed to happen), and 'price' is an int in cents (Which is not quite guaranteed to be valid.). 'best_bid', and 'best_ask' are ints that are guaranteed to satisfy that:
+This is the Order Gatekeeper. Prediction markets have yes or no contracts where the payout is either 100 cents if the event actually happens or 0 if the event doesn't, and for NO contracts the inverse is true.  These contracts trade at whole cents where prices are inclusive from 1 to 99 cents.  At any given moment the market has a "best bid" which is the highest price someone is willing to pay, and a "best ask", which is the lowest price anyone is willing to sell at.
 
-        1<= best_bid < best_ask <=99
+A.) Write a check_order(side, price, best_bid, best_ask) function where 'side' is 'buy' or 'sell',(This is guaranteed to happen), and 'price' is an int in cents (Which is not quite guaranteed to be valid.). 'best_bid', and 'best_ask' are ints that are guaranteed to satisfy that:
 
-    This check_order function will return one of five strings:
+1<= best_bid < best_ask <=99
 
-        'rejected' this is because price is either below 1 or above 99 (MAKE SURE TO CHECK THIS FIRST)
+This check_order function will return one of five strings:
 
-        'trades immediately' this is a sell at or below the best bid or a buy at or above the best ask
+'rejected' this is because price is either below 1 or above 99 (MAKE SURE TO CHECK THIS FIRST)
 
-        'new best price'  this is a buy or sell order strickly between our best_bid and best_ask
+'trades immediately' this is a sell at or below the best bid or a buy at or above the best ask
 
-        'ties best price' this is a buy exactly at best_bid, or a sell order at exactly the best_ask
+'new best price'  this is a buy or sell order strickly between our best_bid and best_ask
 
-        'worse than best price' this gives us a buy at strickly below best_bid or a sell order at strickly above best_ask
+'ties best price' this is a buy exactly at best_bid, or a sell order at exactly the best_ask
 
-    Every single valid input must return exactly one of these finve strings, and no combination of inputs must fall through without a return.
+'worse than best price' this gives us a buy at strickly below best_bid or a sell order at strickly above best_ask
 
-    B.) Next, buying a NO at a price q, is the same as salling a YES at 100 - q.  Same goes for selling a NO at q, which is equivalent as buying a YES at 100 - q.  
+Every single valid input must return exactly one of these finve strings, and no combination of inputs must fall through without a return.
 
-    Write a check_no_order(side, price, best_bid, best_ask) function where "side" describes the NO order and best_bid and best_ask describe the YES market.  This will return the five conditions as above, and this is only done by calling the same check_order rather than writing a completely new bit of comparison logic.
+B.) Next, buying a NO at a price q, is the same as salling a YES at 100 - q.  Same goes for selling a NO at q, which is equivalent as buying a YES at 100 - q.  
 
-    C.) Prove atleast 4 different test cases so that no single wrong implimentation (A flipped inequality, a missing branch, or validation performed last) passes all of them.  
+Write a check_no_order(side, price, best_bid, best_ask) function where "side" describes the NO order and best_bid and best_ask describe the YES market.  This will return the five conditions as above, and this is only done by calling the same check_order rather than writing a completely new bit of comparison logic.
 
-    ANSWER KEY:
+C.) Prove atleast 4 different test cases so that no single wrong implimentation (A flipped inequality, a missing branch, or validation performed last) passes all of them.  
+
+ANSWER KEY:
 
 | call | expected |
 |---|---|
