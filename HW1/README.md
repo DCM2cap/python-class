@@ -23,13 +23,13 @@ Requirements:
 3. Must be generalized enought that it works if the top three variables change to the values specified below
 
 
-
+'''
 fair_value  half_spread  tick_size    Bid    Ask  Spread
      10237          15         25  10200    10275      75
      10240           10        25  10225   10250      25
        500            3          1    497    503       6
       1000            1        100    900   1100     200
-    
+'''    
 Frankly this was a pain to align and it still isn't.  
 
 This question is meant to assess students abilities on floor division/modulo to snapping onto a grid and rounding up only.  Rounding down is obvious, so one has to get creative when rounding up. There are a few snags that might catch someone trying to do this.  One is visualizing and designing the grid or ladder that the ticks sit on, and then accurately catching the edge case where one of the ticks might come back as a decimal. Specifics aside the most challenging part of this is picking an angle to go at it, as most of the information here is fresh to most people, so a longer background on the subject matter is probably important.
