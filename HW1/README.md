@@ -1,4 +1,4 @@
------------------------------------------------- END OF DEFINITIONS AND MISCELLANY --------------------------------------------------------------------------------
+
 
 This was my favorite part of the entire homework.  I decided, much to my workloads chugrin that I was going to get super creative with this and develope what I have been doing alot of math on.  I have already floated some of my work, last year, around a little bit of the math department but frankly I was trying to impliment and work on things in control theory, and stochastic calculus...Graduate level math, and I didn't full understand what I was talking about.  This was fun because the math is simple and there is no toxic flow(people with better info than you) working against you.  
 
