@@ -1,4 +1,4 @@
-#The Order Gatekeeper
+# The Order Gatekeeper
 
 Since this is the bit of creativity that I get to play around with I tend to go a little to far with these, but here is another one.  I have, over the last 3 months been working on pricing algorithms for prediction markets (These are still slightly guerilla-esc and you can hunt for large spread and alpha pretty easily), and we are talking computations that need to take place in microseconds so as to not get screwed over by new orders in a market.  I got the math part, with different bespoke binary pricing kernels and whatnot but it took me a while to figure out what most might think is the easiest part, which is the simple yes or no logic gates, as to whether or not to send a buy or a sell order.  A theme in the work I do is I tend to put the carriage infront of the horse.
 
